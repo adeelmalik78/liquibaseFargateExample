@@ -19,13 +19,13 @@
                   "value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"
                 },
                 {
-                  "name": "LIQUIBASE_COMMAND_PASSWORD","value": "${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}"
+                  "name": "LIQUIBASE_COMMAND_PASSWORD","value": ""
                 },
                 {
-                  "name": "LIQUIBASE_COMMAND_URL","value": "${{ secrets.LIQUIBASE_COMMAND_URL }}"
+                  "name": "LIQUIBASE_COMMAND_URL","value": ""
                 },
                 {
-                  "name": "LIQUIBASE_COMMAND_CHANGELOG_FILE","value": "${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}"
+                  "name": "LIQUIBASE_COMMAND_CHANGELOG_FILE","value": ""
                 },
                 {
                   "name": "AWS_REGION","value": "us-west-2"
