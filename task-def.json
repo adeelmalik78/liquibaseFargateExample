@@ -35,7 +35,13 @@
                 }
               ],
             "environmentFiles": [],
-            "mountPoints": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "sqlrepository",
+                    "containerPath": "/sqlrepository",
+                    "readOnly": false
+                }
+            ],
             "volumesFrom": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
@@ -48,12 +54,35 @@
                 "secretOptions": []
             },
             "systemControls": []
+        },
+        {
+            "name": "SQL-Repository",
+            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository:latest",
+            "cpu": 0,
+            "portMappings": [],
+            "essential": false,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "sqlrepository",
+                    "containerPath": "/sqlrepository",
+                    "readOnly": false
+                }
+            ],
+            "volumesFrom": [],
+            "systemControls": []
         }
     ],
     "taskRoleArn": "arn:aws:iam::442012004811:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::442012004811:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "volumes": [],
+    "volumes": [
+        {
+            "name": "sqlrepository",
+            "host": {}
+        }
+    ],
     "placementConstraints": [],
     "requiresCompatibilities": [
         "FARGATE"
