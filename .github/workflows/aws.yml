@@ -101,8 +101,7 @@ jobs:
         run-task-security-groups: sg-215c6345
         run-task-assign-public-IP: ENABLED
         run-task-container-overrides: |
-          {
-            "environment": [
+            [
                 {
                     "name": "LIQUIBASE_COMMAND_USERNAME",
                     "value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"
@@ -128,4 +127,3 @@ jobs:
                     "value": "false"
                 }
             ]
-          }
