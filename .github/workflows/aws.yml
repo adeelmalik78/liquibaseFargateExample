@@ -100,7 +100,7 @@ jobs:
         run-task-subnets: subnet-bf7d7ada,subnet-345e801f,subnet-0acebc53,subnet-13624764
         run-task-security-groups: sg-215c6345
         run-task-assign-public-IP: ENABLED
-        run-task-container-overrides: |
+        run-task-container-overrides: ```
           {
             "containerOverrides": [
               {
@@ -134,3 +134,4 @@ jobs:
               }
             ]
           }
+          ```
