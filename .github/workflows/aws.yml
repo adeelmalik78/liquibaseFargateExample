@@ -74,7 +74,7 @@ jobs:
     #     image: ${{ env.IMAGE_NAME }}
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: liquibase-test1
         cluster: ${{ env.ECS_CLUSTER }}
