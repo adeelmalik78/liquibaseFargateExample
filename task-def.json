@@ -13,16 +13,7 @@
                 "flow",
                 "--flow-file=flow.yaml"
             ],
-            "environment": [
-                {
-                    "name": "AWS_REGION",
-                    "value": "us-west-2"
-                },
-                {
-                    "name": "INSTALL_MYSQL",
-                    "value": "false"
-                }
-            ],
+            "environment": [],
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
