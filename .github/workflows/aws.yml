@@ -31,6 +31,7 @@ on:
     branches: [ "main" ]
 
 env:
+  AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
   AWS_REGION: ${{ secrets.AWS_REGION }}                  # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: liquibase/sqlrepository          # set this to your Amazon ECR repository name
   # ECS_SERVICE: ${{ vars.MY_ECS_SERVICE }}                 # set this to your Amazon ECS service name
@@ -75,6 +76,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        aws ecr get-login-password --region ${{ AWS_REGION }} | docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_NUMBER }}.dkr.ecr.${{ AWS_REGION }}.amazonaws.com
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
