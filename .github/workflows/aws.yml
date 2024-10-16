@@ -76,7 +76,7 @@ jobs:
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
-        task-definition: liquibase-test1
+        task-definition: ${{ env.ECS_TASK_DEFINITION }}
         cluster: ${{ env.ECS_CLUSTER }}
         run-task: true
         run-task-subnets: subnet-bf7d7ada,subnet-345e801f,subnet-0acebc53,subnet-13624764
