@@ -32,14 +32,14 @@ on:
 
 env:
   AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
-  AWS_REGION: ${{ secrets.AWS_REGION }}                  # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: liquibase/sqlrepository          # set this to your Amazon ECR repository name
-  # ECS_SERVICE: ${{ vars.MY_ECS_SERVICE }}                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: workshop-cluster                 # set this to your Amazon ECS cluster name
+  AWS_REGION: ${{ secrets.AWS_REGION }}   # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: liquibase/sqlrepository # set this to your Amazon ECR repository name
+  # ECS_SERVICE: ${{ vars.MY_ECS_SERVICE }}  # set this to your Amazon ECS service name
+  ECS_CLUSTER: workshop-cluster  # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: task-def.json # set this to the path to your Amazon ECS task definition
-                                               # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: Liquibase-Pro          # set this to the name of the container in the
-                                               # containerDefinitions section of your task definition
+  # file, e.g. .aws/task-definition.json
+  CONTAINER_NAME: Liquibase-Pro # set this to the name of the container in the
+  # containerDefinitions section of your task definition
   IMAGE_NAME: ${{ vars.IMAGE_NAME }}
   # LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
   # LIQUIBASE_COMMAND_URL: ${{ secrets.LIQUIBASE_COMMAND_URL }}
@@ -100,38 +100,5 @@ jobs:
         run-task-subnets: subnet-bf7d7ada,subnet-345e801f,subnet-0acebc53,subnet-13624764
         run-task-security-groups: sg-215c6345
         run-task-assign-public-IP: ENABLED
-        run-task-container-overrides: |
-              {
-                "containerOverrides": [
-                  {
-                    "name": "${{ CONTAINER_NAME }}",
-                    "environment": [
-                      {
-                          "name": "LIQUIBASE_COMMAND_USERNAME",
-                          "value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"
-                      },
-                      {
-                          "name": "LIQUIBASE_COMMAND_PASSWORD",
-                          "value": "${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}"
-                      },
-                      {
-                          "name": "LIQUIBASE_COMMAND_URL",
-                          "value": "${{ secrets.LIQUIBASE_COMMAND_URL }}"
-                      },
-                      {
-                          "name": "LIQUIBASE_COMMAND_CHANGELOG_FILE",
-                          "value": "${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}"
-                      },
-                      {
-                          "name": "AWS_REGION",
-                          "value": "us-west-2"
-                      },
-                      {
-                          "name": "INSTALL_MYSQL",
-                          "value": "false"
-                      }
-                    ]
-                  }
-                ]
-              }
+        run-task-container-overrides: '{  "containerOverrides": [{"name": "${{ CONTAINER_NAME }}","environment": [{"name": "LIQUIBASE_COMMAND_USERNAME","value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"},{"name": "LIQUIBASE_COMMAND_PASSWORD","value": "${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}"},{"name": "LIQUIBASE_COMMAND_URL","value": "${{ secrets.LIQUIBASE_COMMAND_URL }}"},{"name": "LIQUIBASE_COMMAND_CHANGELOG_FILE","value": "${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}"},{"name": "AWS_REGION","value": "us-west-2"},{"name": "INSTALL_MYSQL","value": "false"}]}]}'
 
