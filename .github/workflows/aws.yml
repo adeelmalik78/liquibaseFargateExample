@@ -100,5 +100,5 @@ jobs:
         run-task-subnets: subnet-bf7d7ada,subnet-345e801f,subnet-0acebc53,subnet-13624764
         run-task-security-groups: sg-215c6345
         run-task-assign-public-IP: ENABLED
-        run-task-container-overrides: '{  "containerOverrides": [{"name": "${{ env.CONTAINER_NAME }}","environment": [{"name": "LIQUIBASE_COMMAND_USERNAME","value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"},{"name": "LIQUIBASE_COMMAND_PASSWORD","value": "${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}"},{"name": "LIQUIBASE_COMMAND_URL","value": "${{ secrets.LIQUIBASE_COMMAND_URL }}"},{"name": "LIQUIBASE_COMMAND_CHANGELOG_FILE","value": "${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}"},{"name": "AWS_REGION","value": "us-west-2"},{"name": "INSTALL_MYSQL","value": "false"}]}]}'
+        run-task-container-overrides: file://overrides.json
 
