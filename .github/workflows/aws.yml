@@ -40,6 +40,10 @@ env:
   CONTAINER_NAME: Liquibase-Pro          # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
   IMAGE_NAME: 709825985650.dkr.ecr.us-east-1.amazonaws.com/liquibase/liquibase/liquibasepro:4.29.2-test2
+  LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
+  LIQUIBASE_COMMAND_URL: ${{ secrets.LIQUIBASE_COMMAND_URL }}
+  LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LIQUIBASE_COMMAND_USERNAME }}
+  LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LIQUIBASE_COMMAND_PASSWORD }}
 
 permissions:
   contents: read

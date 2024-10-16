@@ -8,34 +8,19 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "--search-path=s3://liquibase-workshop-bucket/",
+                "--search-path=./,s3://liquibase-workshop-bucket/",
+                "--defaults-file=liquibase.properties",
                 "flow",
                 "--flow-file=flow.yaml"
             ],
             "environment": [
-                {
-                    "name": "LIQUIBASE_COMMAND_CHANGELOG_FILE",
-                    "value": "changelog.sql"
-                },
-                {
-                    "name": "LIQUIBASE_COMMAND_URL",
-                    "value": "aws-secrets,liquibase-workshop-secrets,url"
-                },
-                {
-                    "name": "LIQUIBASE_COMMAND_PASSWORD",
-                    "value": "aws-secrets,rds!cluster-e4112c6e-08fe-4b32-a633-16dc71b0e7a4,password"
-                },
                 {
                     "name": "AWS_REGION",
                     "value": "us-west-2"
                 },
                 {
                     "name": "INSTALL_MYSQL",
-                    "value": "true"
-                },
-                {
-                    "name": "LIQUIBASE_COMMAND_USERNAME",
-                    "value": "aws-secrets,rds!cluster-e4112c6e-08fe-4b32-a633-16dc71b0e7a4,username"
+                    "value": "false"
                 }
             ],
             "environmentFiles": [],
