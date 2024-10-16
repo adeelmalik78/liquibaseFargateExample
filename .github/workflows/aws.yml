@@ -32,7 +32,7 @@ on:
 
 env:
   AWS_REGION: ${{ secrets.AWS_REGION }}                  # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: 709825985650.dkr.ecr.us-east-1.amazonaws.com/liquibase          # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: 442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository          # set this to your Amazon ECR repository name
   # ECS_SERVICE: ${{ vars.MY_ECS_SERVICE }}                 # set this to your Amazon ECS service name
   ECS_CLUSTER: workshop-cluster                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: task-def.json # set this to the path to your Amazon ECS task definition
@@ -64,6 +64,20 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
 
     - name: Login to Amazon ECR
       id: login-ecr
