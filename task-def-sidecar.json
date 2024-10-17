@@ -65,7 +65,6 @@
             "cpu": 0,
             "portMappings": [],
             "command": [
-                "sh",
                 "./alive.sh"
             ],
             "essential": false,
