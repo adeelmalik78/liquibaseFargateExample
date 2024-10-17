@@ -5,6 +5,12 @@
 #   CR: ${CR:-null}
 
 stages:
+
+  Version:
+    actions:
+      - type: shell
+        command: liquibase --version
+
   Validation:
     actions: 
       - type: liquibase

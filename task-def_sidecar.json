@@ -8,8 +8,8 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "--search-path=./,s3://liquibase-workshop-bucket/",
-                "--defaults-file=liquibase.properties",
+                "--search-path=/sqlrepository",
+                "--defaults-file=/sqlrepository/liquibase.properties",
                 "flow",
                 "--flow-file=flow.yaml"
             ],
