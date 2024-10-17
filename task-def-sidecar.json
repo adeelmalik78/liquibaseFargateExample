@@ -64,6 +64,10 @@
             "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository",
             "cpu": 0,
             "portMappings": [],
+            "command": [
+                "sh",
+                "./alive.sh"
+            ],
             "essential": false,
             "environment": [],
             "environmentFiles": [],
