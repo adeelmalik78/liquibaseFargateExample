@@ -16,7 +16,7 @@
             "environment": [
                 {
                   "name": "LIQUIBASE_COMMAND_USERNAME",
-                  "value": "${{ secrets.LIQUIBASE_COMMAND_USERNAME }}"
+                  "value": ""
                 },
                 {
                   "name": "LIQUIBASE_COMMAND_PASSWORD","value": ""
@@ -57,7 +57,7 @@
         },
         {
             "name": "SQL-Repository",
-            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository:latest",
+            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository",
             "cpu": 0,
             "portMappings": [],
             "essential": false,
