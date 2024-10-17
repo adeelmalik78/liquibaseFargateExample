@@ -8,10 +8,9 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "--search-path=/sqlrepository",
-                "--defaults-file=/sqlrepository/liquibase.properties",
-                "flow",
-                "--flow-file=flow.yaml"
+                "ls",
+                "-alh",
+                "/sqlrepository"
             ],
             "environment": [
                 {
