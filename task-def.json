@@ -9,7 +9,7 @@
             "essential": true,
             "command": [
                 "--search-path=s3://liquibase-workshop-bucket/",
-                "--defaults-file=liquibase.properties",
+                "--defaults-file=s3://liquibase-workshop-bucket/liquibase.properties",
                 "flow",
                 "--flow-file=flow.yaml"
             ],
