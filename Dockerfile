@@ -3,4 +3,5 @@ RUN apt-get update
 COPY sqlcode /sqlrepository/
 COPY liquibase.properties /sqlrepository/
 COPY flow.yaml /sqlrepository/
-CMD alive.sh
+COPY alive.sh .
+CMD ./alive.sh
