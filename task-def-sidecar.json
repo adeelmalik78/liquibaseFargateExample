@@ -47,6 +47,7 @@
             "command": [
                 "ls",
                 "-alh",
+                ".",
                 "/sql/sqlrepository"
             ],
             "environment": [
