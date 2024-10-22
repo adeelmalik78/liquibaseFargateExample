@@ -2,6 +2,38 @@
     "family": "liquibase-test1",
     "containerDefinitions": [
         {
+            "name": "SQL-Repository",
+            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository",
+            "cpu": 0,
+            "portMappings": [],
+            "command": [
+                "/bin/sh",
+                "./alive.sh"
+            ],
+            "essential": false,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [
+                {
+                    "sourceVolume": "sqlrepository",
+                    "containerPath": "/sqlrepository",
+                    "readOnly": false
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/liquibase-test1",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "us-west-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "volumesFrom": [],
+            "systemControls": []
+        },
+        {
             "name": "Liquibase-Pro",
             "image": "709825985650.dkr.ecr.us-east-1.amazonaws.com/liquibase/liquibase/liquibasepro:4.29.2-test3",
             "cpu": 0,
@@ -57,38 +89,6 @@
                 },
                 "secretOptions": []
             },
-            "systemControls": []
-        },
-        {
-            "name": "SQL-Repository",
-            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository",
-            "cpu": 0,
-            "portMappings": [],
-            "command": [
-                "/bin/sh",
-                "./alive.sh"
-            ],
-            "essential": false,
-            "environment": [],
-            "environmentFiles": [],
-            "mountPoints": [
-                {
-                    "sourceVolume": "sqlrepository",
-                    "containerPath": "/sqlrepository",
-                    "readOnly": false
-                }
-            ],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-group": "/ecs/liquibase-test1",
-                    "awslogs-create-group": "true",
-                    "awslogs-region": "us-west-2",
-                    "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
-            },
-            "volumesFrom": [],
             "systemControls": []
         }
     ],
