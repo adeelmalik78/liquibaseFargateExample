@@ -69,7 +69,7 @@
                   "name": "AWS_REGION","value": "us-west-2"
                 },
                 {
-                  "name": "INSTALL_MYSQL","value": "false"
+                  "name": "INSTALL_MYSQL","value": "true"
                 }
               ],
             "environmentFiles": [],
