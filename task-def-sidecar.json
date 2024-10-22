@@ -48,8 +48,7 @@
                 "ls",
                 "-alh",
                 "/",
-                "/sql",
-                "/sql/sqlrepository"
+                "/sqlrepository"
             ],
             "environment": [
                 {
@@ -76,7 +75,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "sqlrepository",
-                    "containerPath": "/sql/sqlrepository",
+                    "containerPath": "/sqlrepository",
                     "readOnly": false
                 }
             ],

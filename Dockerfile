@@ -4,3 +4,4 @@ COPY sqlcode /sqlrepository/
 COPY liquibase.properties /sqlrepository/
 COPY flow.yaml /sqlrepository/
 COPY alive.sh .
+VOLUME [ "/sqlrepository" ]
