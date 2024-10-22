@@ -108,7 +108,7 @@
     "cpu": "1024",
     "memory": "2048",
     "runtimePlatform": {
-        "cpuArchitecture": "ARM64",
+        "cpuArchitecture": "AMD64",
         "operatingSystemFamily": "LINUX"
     }
 }
