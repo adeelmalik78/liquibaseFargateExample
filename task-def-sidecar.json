@@ -45,7 +45,7 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "--defaults-file=liquibase.properties",
+                "--defaults-file=/sqlcode/liquibase.properties",
                 "flow",
                 "--flow-file=/sqlcode/flow.yaml"
             ],
