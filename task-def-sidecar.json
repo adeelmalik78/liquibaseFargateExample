@@ -73,12 +73,6 @@
                     "readOnly": false
                 }
             ],
-            "volumesFrom": [
-                {
-                    "sourceContainer": "SQL-Repository",
-                    "readOnly": false
-                }
-            ],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
