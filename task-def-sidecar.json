@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "SQL-Repository",
-            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlrepository",
+            "image": "442012004811.dkr.ecr.us-west-2.amazonaws.com/liquibase/sqlcode",
             "cpu": 0,
             "portMappings": [],
             "command": [
@@ -21,7 +21,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "sqlrepository",
-                    "containerPath": "/sqlrepository",
+                    "containerPath": "/sqlcode",
                     "readOnly": false
                 }
             ],
@@ -45,10 +45,8 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "ls",
-                "-alh",
-                "/",
-                "/sqlrepository"
+                "flow",
+                "--flow-file=sqlcode/flow.yaml"
             ],
             "environment": [
                 {
@@ -75,7 +73,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "sqlrepository",
-                    "containerPath": "/sqlrepository",
+                    "containerPath": "/sqlcode",
                     "readOnly": false
                 }
             ],
