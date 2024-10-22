@@ -45,9 +45,11 @@
             "portMappings": [],
             "essential": true,
             "command": [
-                "ls",
-                "-alh",
-                "/sqlcode"
+                "--defaults-file=/sqlcode/liquibase.properties",
+                "--search-path=/sqlcode",
+                "--changelog-file=changelog.yaml",
+                "flow",
+                "--flow-file=/sqlcode/flow.yaml"
             ],
             "environment": [
                 {
