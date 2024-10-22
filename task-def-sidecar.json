@@ -46,7 +46,7 @@
             "essential": true,
             "command": [
                 "flow",
-                "--flow-file=sqlcode/flow.yaml"
+                "--flow-file=/sqlcode/flow.yaml"
             ],
             "environment": [
                 {
