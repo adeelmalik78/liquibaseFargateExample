@@ -13,7 +13,7 @@
             "essential": false,
             "environment": [
                 {
-                    "name": "AWS_REGION",
+                    "name": "AWS_DEFAULT_REGION",
                     "value": "us-west-2"
                 }
             ],
@@ -47,7 +47,7 @@
             "command": [
                 "ls",
                 "-alh",
-                "/sqlrepository"
+                "/sql/sqlrepository"
             ],
             "environment": [
                 {
@@ -74,7 +74,7 @@
             "mountPoints": [
                 {
                     "sourceVolume": "sqlrepository",
-                    "containerPath": "/sqlrepository",
+                    "containerPath": "/sql/sqlrepository",
                     "readOnly": false
                 }
             ],
