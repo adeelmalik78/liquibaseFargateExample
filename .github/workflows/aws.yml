@@ -36,17 +36,10 @@ env:
   AWS_ACCOUNT_NUMBER: ${{ secrets.AWS_ACCOUNT_NUMBER }}
   AWS_REGION: ${{ secrets.AWS_REGION }}   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: liquibase/sqlrepository # set this to your Amazon ECR repository name
-  # ECS_SERVICE: ${{ vars.MY_ECS_SERVICE }}  # set this to your Amazon ECS service name
   ECS_CLUSTER: workshop-cluster  # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: task-def-sidecar.json # set this to the path to your Amazon ECS task definition
-  # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: Liquibase-Pro # set this to the name of the container in the
-  # containerDefinitions section of your task definition
   IMAGE_NAME: ${{ vars.IMAGE_NAME }}
-  # LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ vars.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
-  # LIQUIBASE_COMMAND_URL: ${{ vars.LIQUIBASE_COMMAND_URL }}
-  # LIQUIBASE_COMMAND_USERNAME: ${{ vars.LIQUIBASE_COMMAND_USERNAME }}
-  # LIQUIBASE_COMMAND_PASSWORD: ${{ vars.LIQUIBASE_COMMAND_PASSWORD }}
 
 permissions:
   contents: read
@@ -55,7 +48,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    # runs-on: macos-latest
     environment: production
 
     steps:
@@ -79,13 +71,6 @@ jobs:
         ECR_REGISTRY: ${{ env.AWS_ACCOUNT_NUMBER }}.dkr.ecr.us-west-2.amazonaws.com
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        # Build a docker container and
-        # push it to ECR so that it can
-        # be deployed to ECS.
-        # docker buildx create --name mycustombuilder --driver docker-container --bootstrap
-        # docker buildx use mycustombuilder
-        # docker buildx build --platform linux/amd64,linux/arm64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .        
         docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
